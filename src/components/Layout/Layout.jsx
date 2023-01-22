@@ -5,7 +5,7 @@ import { AppBar } from "../AppBar/AppBar";
 
 export const Layout = () => {
     return (
-    <div display="grid" gridTemplateRows="300px 1fr">
+    <div display="grid" gridtemplaterows="300px 1fr">
         <AppBar />
         <Outlet />
     </div>
