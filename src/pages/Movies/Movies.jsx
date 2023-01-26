@@ -1,11 +1,12 @@
 import { searchMovie } from "../../service/movieApi";
 import { useState, useEffect } from 'react';
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 import { SearchBox } from "../../components/SearchBox/SearchBox";
 import {Box, List, Item, StyledLink } from "./Movies.styled";
 
 
 export const Movies = () => {
+    const location = useLocation();
     const [movies, setMovies] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
     const searchQuery = searchParams.get("query") ?? "";
@@ -27,10 +28,6 @@ export const Movies = () => {
     fetchData();
   }, [searchQuery]);
 
-  // const handleChange = value => {
-  //  setSearchParams(value !== "" ? { query: value } : {});
-   
-  // }
 
   const handleSubmit = value => {
     setSearchParams({ query: `${value}` });
@@ -43,7 +40,7 @@ export const Movies = () => {
     <List>
     {movies?.map(({ id, title }) => (
       <Item key={id}>
-    <StyledLink key={id} id={id} to={`${id}`} title={title}>{title}</StyledLink>
+    <StyledLink key={id} id={id} to={`${id}`} title={title} state={{from: location}}>{title}</StyledLink>
     </Item>
   ))}
   </List>

@@ -19,10 +19,14 @@ display: flex;
 flex-direction: column;
 margin: 0;
 padding: 0;
-list-style: square;
+list-style: none;
+`;
+
+export const Item = styled.li`
+margin-bottom: 5px;
+text-decoration: none;
 `;
 
 export const StyledLink = styled(Link)`
-margin-bottom: 5px;
 text-decoration: none;
 `;
