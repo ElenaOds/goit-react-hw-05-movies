@@ -8,16 +8,16 @@ import {Box, List, Item, StyledLink } from "./Movies.styled";
 export const Movies = () => {
     const [movies, setMovies] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
-    const query = searchParams.get("query") ?? "";
+    const searchQuery = searchParams.get("query") ?? "";
   
   useEffect(() => {
-    if (!query) {
+    if (!searchQuery) {
         return;
       }
 
     const fetchData = async () => {
       try {
-        const {results} = await searchMovie(query);
+        const {results} = await searchMovie(searchQuery);
         setMovies([...results]);
       } catch (error) {
         console.error(error);
@@ -25,17 +25,19 @@ export const Movies = () => {
     };
 
     fetchData();
-  }, [query]);
+  }, [searchQuery]);
 
-  const handleChange = value => {
-   setSearchParams(value !== "" ? { query: value } : {});
+  // const handleChange = value => {
+  //  setSearchParams(value !== "" ? { query: value } : {});
    
-  }
+  // }
 
-
+  const handleSubmit = value => {
+    setSearchParams({ query: `${value}` });
+  };
     return (
         <Box>
-        <SearchBox value={query} onChange={handleChange} />
+        <SearchBox onSubmit={handleSubmit} />
        {movies.length > 0 && (
        
     <List>

@@ -1,14 +1,36 @@
+import { useState } from 'react';
+import { toast } from 'react-toastify';
 import  {Box, Input, Button } from "./SearchBox.styled";
 
-export const SearchBox = ({ value, onChange}) => {
+export const SearchBox = ({onSubmit}) => {
+const [searchQuery, setSearchQuery] = useState('');
+
+const handleChange = event => {
+    setSearchQuery(event.currentTarget.value.toLowerCase());
+};
+
+
+const handleSubmit = event => {
+    event.preventDefault();
+
+    if(searchQuery.trim() === '') {
+        return toast.error("You cannot search by empty field. Try again");
+    }
+
+    onSubmit(searchQuery);
+    setSearchQuery('');
+}
     return (
-        <Box>
-            <Input type="text"
+        <Box onSubmit={handleSubmit}>
+            <Input 
+            type="text"
             placeholder="Search movies" 
-            value={value}
-            onChange={e => onChange(e.target.value)}
+            value={searchQuery}
+            onChange={handleChange}
             />
-            <Button type="submit">Search</Button>
+            <Button 
+            
+            type="submit">Search</Button>
         </Box>
     )
 }

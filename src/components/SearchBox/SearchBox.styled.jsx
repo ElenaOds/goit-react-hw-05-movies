@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Box = styled.div`
+export const Box = styled.form`
 margin-bottom: 20px;
 display: flex;
 `;
