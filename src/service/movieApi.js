@@ -74,15 +74,4 @@ export const getReviews = async movieId => {
     return data;
   };
 
-  // https://api.themoviedb.org/3/movie/{movie_id}/images?api_key=<<api_key>>&language=en-US
-
-  export const getImages = async movieId => {
-    const { data } = await moviesApi.get(`movie/${movieId}/images`, {
-      params: {
-        api_key: KEY,
-        language: 'en-US',
-       
-      },
-    });
-    return data;
-  };
+ 

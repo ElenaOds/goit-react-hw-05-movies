@@ -5,7 +5,7 @@ import { SearchBox } from "../../components/SearchBox/SearchBox";
 import {Box, List, Item, StyledLink } from "./Movies.styled";
 
 
-export const Movies = () => {
+const Movies = () => {
     const location = useLocation();
     const [movies, setMovies] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -49,3 +49,5 @@ export const Movies = () => {
     </Box>
     )
 };
+
+export default Movies;

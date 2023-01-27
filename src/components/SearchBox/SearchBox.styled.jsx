@@ -17,11 +17,11 @@ export const Input = styled.input`
   padding-right: 4px;
     
     :focus-within {
-    border: 2px solid #0000FF;
+    border: 2px solid #5959a6;
     outline: 1px solid transparent;
   }
   :hover {
-    border: 2px solid #0000FF;
+    border: 2px solid #5959a6;
     outline: 1px solid transparent;
 `;
 
@@ -35,8 +35,9 @@ export const Button = styled.button`
   cursor: pointer;
 
   :hover {
-    border: 2px solid #0000FF;
+    border: 2px solid #8d8d8d;
     outline: 1px solid transparent;
+    background-color: #b0b0b0;
   }
 
 `

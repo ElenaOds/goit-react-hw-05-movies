@@ -1,9 +1,10 @@
 import { getMovie } from "../../service/movieApi";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, Link, Outlet } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { ReactComponent as ButtonIcon } from "../../icons/left-arrow.svg";
+import { StyledLink, Section, Img, List, Item, Text } from "./MovieDetails.styled";
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
     const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
     const location = useLocation();
@@ -16,38 +17,44 @@ export const MovieDetails = () => {
         getMovie(movieId).then(setMovie);
     }, [movieId]);
 
-    console.log(movie);
-
     if (!movie) 
     return null;
 
-    const { poster_path, title, overview,  } = movie;
+    const { poster_path, title, overview } = movie;
+    const backLinkHref = location.state?.from ?? "/movies";
+    
     return (
         <div>
-            <Link to={location.state.from}>Go back</Link>
+            <StyledLink to={backLinkHref}>
+            <ButtonIcon aria-label="Return back"/>
+            Go back</StyledLink>
+                    
             { movie && (
-            <div>
-            <img
+                <>
+            <Section>
+            <Img
               src={`https://image.tmdb.org/t/p/w300${poster_path}`}
               alt={title}
                 />
             <div>
-                <h1>{title} ({getYear()})</h1>
+                <h2>{title} ({getYear()})</h2>
                 <p>User score: {getScore()}</p>
-                <h2>Overview</h2>
+                <h3>Overview</h3>
                 <p>{overview}</p>
-                <h3>Genres</h3>
+                <h4>Genres</h4>
                 <p>{getGenre()}</p>
             </div>
-            <ul>
-             <p>Additional information</p>   
-            <Link to={'cast'}>Cast</Link>
-            <Link to={'revioes'}>Reviews</Link>
-            </ul>
-            </div>
+            </Section>
+            <Text>Additional information</Text> 
+            <List>
+            <Item><Link to='cast' state={location.state}>Cast</Link></Item>
+            <Item><Link to={'reviews'} state={location.state}>Reviews</Link></Item>
+            </List>
+            <Outlet />
+            </>
             )}
         </div>
-        
-        
     )
 }
+
+export default MovieDetails;

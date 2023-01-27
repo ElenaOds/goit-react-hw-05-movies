@@ -3,7 +3,7 @@ import { getTrendingMovies } from '../../service/movieApi';
 import { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 
-export function Home () {
+const Home = () => {
   const location = useLocation();
   const [movies, setMovies] = useState([]);
   
@@ -20,6 +20,7 @@ export function Home () {
     fetchData({ page: 1 });
   }, []);
 
+
     return (
       <Box>
         <Name>Tranding today</Name>
@@ -34,3 +35,5 @@ export function Home () {
        </Box> 
     )
 };
+
+export default Home;
