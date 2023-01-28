@@ -1,6 +1,6 @@
 import { getMovie } from "../../service/movieApi";
 import { useParams, useLocation, Link, Outlet } from "react-router-dom";
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { ReactComponent as ButtonIcon } from "../../icons/left-arrow.svg";
 import { StyledLink, Section, Img, List, Item, Text } from "./MovieDetails.styled";
 
@@ -50,10 +50,7 @@ const MovieDetails = () => {
             <Item><Link to='cast' state={location.state}>Cast</Link></Item>
             <Item><Link to='reviews' state={location.state}>Reviews</Link></Item>
             </List>
-            <Suspense fallback={null}>
             <Outlet />
-            </Suspense>
-
             </>
             )}
         </div>
