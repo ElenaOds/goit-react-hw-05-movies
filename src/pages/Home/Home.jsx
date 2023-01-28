@@ -2,17 +2,22 @@ import { Box, Name, List, StyledLink, Item } from "./Home.styled";
 import { getTrendingMovies } from '../../service/movieApi';
 import { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
+import Loader from "../../components/Loader/Loader";
 
 const Home = () => {
   const location = useLocation();
   const [movies, setMovies] = useState([]);
+  const [status, setStatus] = useState('idle');
   
   useEffect(() => {
     const fetchData = async ({ page }) => {
+      setStatus('pending');
       try {
         const { results } = await getTrendingMovies({ page });
         setMovies([...results]);
+        setStatus('resolved');
       } catch (error) {
+        setStatus('rejected');
         console.error(error);
       }
     };
@@ -31,8 +36,9 @@ const Home = () => {
           </Item>
           ))}
         </List>
-        
+        {status === "pending"  && <Loader />}
        </Box> 
+        
     )
 };
 

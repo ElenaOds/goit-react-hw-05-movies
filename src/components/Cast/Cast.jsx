@@ -4,14 +4,13 @@ import { useParams } from "react-router-dom";
 import {List, Img, Item} from "./Cast.styled";
 import image from "../../image/Noimage.jpg";
 
+
 const Cast = () => {
     const [cast, setCast] = useState(null);
     const { movieId } = useParams();
 
-
     useEffect(() => {
         const fetchData = async () => {
-          
           try {
             const {cast} = await getCredits(movieId);
             setCast([...cast]);
@@ -48,14 +47,14 @@ const Cast = () => {
             <Img
               src={`https://image.tmdb.org/t/p/w500${profile_path}`}
               alt={name}
-                />
-                
+                />  
                 <p>Name: {name}</p>
                 <p>Character: {character}</p>
                 
           </Item>
      );
         })} 
+        
         </List>
       );
 }

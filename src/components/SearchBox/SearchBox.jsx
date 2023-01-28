@@ -18,7 +18,7 @@ const handleSubmit = event => {
         return toast.error("You cannot search by empty field. Try again");
     }
 
-       onSubmit(searchQuery);
+    onSubmit(searchQuery);
     setSearchQuery('');
 }
     return (

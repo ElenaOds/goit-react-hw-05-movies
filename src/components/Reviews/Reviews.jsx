@@ -3,13 +3,13 @@ import { getReviews } from "../../service/movieApi";
 import { useParams } from "react-router-dom";
 import { Text, List } from "./Reviews.styled";
 
+
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     const { movieId } = useParams();
 
     useEffect(() => {
         const fetchData = async () => {
-          
           try {
             const {results} = await getReviews(movieId);
             setReviews([...results]);
@@ -35,6 +35,7 @@ const Reviews = () => {
               <p>{content}</p>
             </li>                 
         ))}
+       
         </List>
       ); 
 }
