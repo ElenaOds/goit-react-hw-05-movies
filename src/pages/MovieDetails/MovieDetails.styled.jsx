@@ -44,7 +44,6 @@ border-bottom: 2px solid #a6a6a6;
 
 export const Item = styled.li`
 margin-bottom: 5px;
-// pagging-left: 30px;
 `;
 
 export const Text = styled.p`

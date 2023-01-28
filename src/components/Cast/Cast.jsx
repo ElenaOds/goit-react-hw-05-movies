@@ -5,7 +5,7 @@ import {List, Img, Item} from "./Cast.styled";
 import image from "../../image/Noimage.jpg";
 
 const Cast = () => {
-    const [cast, setCast] = useState([]);
+    const [cast, setCast] = useState(null);
     const { movieId } = useParams();
 
 
@@ -23,7 +23,7 @@ const Cast = () => {
         fetchData();
       }, [movieId]);
 
-    console.log(cast);
+    
     return (
         <List>
           {cast?.map(({ id, name, character, profile_path }) => {

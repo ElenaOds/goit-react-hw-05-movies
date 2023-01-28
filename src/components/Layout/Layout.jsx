@@ -1,8 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { AppBar } from "../AppBar/AppBar";
 import { Suspense } from "react";
-// import { Box } from "./Layout.styled";
-
+import { ToastContainer } from 'react-toastify';
 
 export const Layout = () => {
     return (
@@ -11,7 +10,7 @@ export const Layout = () => {
         <Suspense fallback={null}>
             <Outlet />
         </Suspense>
-        
+        <ToastContainer autoClose={3000} theme="colored"/>
     </div>
     );
 };

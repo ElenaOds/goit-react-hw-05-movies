@@ -4,7 +4,6 @@ import { useSearchParams, useLocation } from "react-router-dom";
 import { SearchBox } from "../../components/SearchBox/SearchBox";
 import {Box, List, Item, StyledLink } from "./Movies.styled";
 
-
 const Movies = () => {
     const location = useLocation();
     const [movies, setMovies] = useState([]);
@@ -13,7 +12,7 @@ const Movies = () => {
   
   useEffect(() => {
     if (!searchQuery) {
-        return;
+        return
       }
 
     const fetchData = async () => {
@@ -32,7 +31,8 @@ const Movies = () => {
   const handleSubmit = value => {
     setSearchParams({ query: `${value}` });
   };
-    return (
+
+      return (
         <Box>
         <SearchBox onSubmit={handleSubmit} />
        {movies.length > 0 && (
@@ -47,6 +47,7 @@ const Movies = () => {
        )}
                 
     </Box>
+    
     )
 };
 

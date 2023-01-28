@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import  {Box, Input, Button } from "./SearchBox.styled";
 
 export const SearchBox = ({onSubmit}) => {
@@ -17,7 +18,7 @@ const handleSubmit = event => {
         return toast.error("You cannot search by empty field. Try again");
     }
 
-    onSubmit(searchQuery);
+       onSubmit(searchQuery);
     setSearchQuery('');
 }
     return (
@@ -32,5 +33,7 @@ const handleSubmit = event => {
             
             type="submit">Search</Button>
         </Box>
+        
     )
-}
+    
+};
