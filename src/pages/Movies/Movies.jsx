@@ -2,10 +2,11 @@ import { searchMovie } from "../../service/movieApi";
 import { useState, useEffect } from 'react';
 import { useSearchParams, useLocation } from "react-router-dom";
 import { SearchBox } from "../../components/SearchBox/SearchBox";
-import {Box, List, Item, StyledLink } from "./Movies.styled";
+import {Box, List, Item, StyledLink, Img } from "./Movies.styled";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from "../../components/Loader/Loader";
+import image from "../../image/Noimage.jpg";
 
 const Movies = () => {
     const location = useLocation();
@@ -49,9 +50,21 @@ const Movies = () => {
        {movies.length > 0 && (
        
     <List>
-    {movies?.map(({ id, title }) => (
+    {movies?.map(({ id, title, poster_path }) => (
       <Item key={id}>
-    <StyledLink key={id} id={id} to={`${id}`} title={title} state={{from: location}}>{title}</StyledLink>
+    <StyledLink key={id} id={id} to={`${id}`} title={title} state={{from: location}}>
+    {poster_path === null ? (
+            <Img
+            src={image}
+            alt={title}
+              />
+           ) : (
+            <Img
+            src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+            alt={title}
+              />
+           )}
+    </StyledLink>
     </Item>
   ))}
   </List>

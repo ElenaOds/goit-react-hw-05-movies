@@ -16,9 +16,9 @@ font-size: 30px;
 
 export const List = styled.ul`
 display: flex;
-flex-direction: column;
-margin: 0;
-padding: 0;
+flex-wrap: wrap;
+gap: 20px;
+justify-content: center;
 list-style: none;
 `;
 
@@ -30,3 +30,8 @@ text-decoration: none;
 export const StyledLink = styled(Link)`
 text-decoration: none;
 `;
+
+export const Img = styled.img`
+width: 250px;
+height: 100%;
+`

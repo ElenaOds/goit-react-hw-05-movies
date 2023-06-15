@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import styled from '@emotion/styled';
 
 export const Nav = styled.nav`
-background-color: #fafafa;
 height: 60px;
 padding: 0 50px;
 display: flex;
@@ -10,7 +9,9 @@ align-items: center;
 border-bottom: 4px;
 box-shadow: 
 0px 2px 1px rgb(0 0 0 / 20%);
-
+background: #C9D6FF;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 `;
 
 export const StyledLink = styled(NavLink)`

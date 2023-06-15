@@ -1,8 +1,9 @@
-import { Box, Name, List, StyledLink, Item } from "./Home.styled";
+import { Box, Name, List, StyledLink, Item, Img } from "./Home.styled";
 import { getTrendingMovies } from '../../service/movieApi';
 import { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
+import image from "../../image/Noimage.jpg";
 
 const Home = () => {
   const location = useLocation();
@@ -30,11 +31,24 @@ const Home = () => {
       <Box>
         <Name>Tranding today</Name>
         <List>
-          {movies?.map(({ id, title }) => (
+          {movies?.map(({ id, title, poster_path }) => (
           <Item key={id}>
-            <StyledLink to={`/movies/${id}`} key={id} id={id} title={title} state={{from: location}}>{title}</StyledLink>
+            <StyledLink to={`/movies/${id}`} key={id} id={id} state={{from: location}}>
+           {poster_path === null ? (
+            <Img
+            src={image}
+            alt={title}
+              />
+           ) : (
+            <Img
+            src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+            alt={title}
+              />
+           )}
+           
+            </StyledLink>
           </Item>
-          ))}
+))}
         </List>
         {status === "pending"  && <Loader />}
        </Box> 
