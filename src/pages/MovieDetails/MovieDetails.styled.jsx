@@ -32,6 +32,8 @@ export const Img = styled.img`
 display: block;
 margin-right: 20px;
 margin-bottom: 10px;
+width: 300px;
+height: 100%;
 `;
 
 export const List = styled.ul`

@@ -3,6 +3,7 @@ import { useParams, useLocation, Link, Outlet } from "react-router-dom";
 import { useState, useEffect, Suspense } from 'react';
 import { ReactComponent as ButtonIcon } from "../../icons/left-arrow.svg";
 import { StyledLink, Section, Img, List, Item, Text } from "./MovieDetails.styled";
+import image from "../../image/Noimage.jpg";
 
 const MovieDetails = () => {
     const { movieId } = useParams();
@@ -32,10 +33,17 @@ const MovieDetails = () => {
             { movie && (
                 <>
             <Section>
+            {poster_path === null ? (
             <Img
-              src={`https://image.tmdb.org/t/p/w300${poster_path}`}
-              alt={title}
-                />
+            src={image}
+            alt={title}
+              />
+           ) : (
+            <Img
+            src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+            alt={title}
+              />
+           )}
             <div>
                 <h2>{title} ({getYear()})</h2>
                 <p>User score: {getScore()}</p>
